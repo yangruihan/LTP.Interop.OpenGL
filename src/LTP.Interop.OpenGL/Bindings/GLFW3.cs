@@ -27,7 +27,6 @@
 
 #region Using statements
 using System;
-
 using LTP.Interop.InteropServices;
 #endregion
 
@@ -40,6 +39,7 @@ namespace LTP.Interop.OpenGL.Bindings
 		private static IntPtr _handle;
 		#endregion
 
+		#region glfw3.h
 		#region Constants
 		public const int GLFW_VERSION_MAJOR = 3;
 		public const int GLFW_VERSION_MINOR = 3;
@@ -54,10 +54,6 @@ namespace LTP.Interop.OpenGL.Bindings
 		public const int GLFW_HAT_RIGHT = 2;
 		public const int GLFW_HAT_DOWN = 4;
 		public const int GLFW_HAT_LEFT = 8;
-		public const int GLFW_HAT_RIGHT_UP = ( GLFW_HAT_RIGHT | GLFW_HAT_UP );
-		public const int GLFW_HAT_RIGHT_DOWN = ( GLFW_HAT_RIGHT | GLFW_HAT_DOWN );
-		public const int GLFW_HAT_LEFT_UP = ( GLFW_HAT_LEFT | GLFW_HAT_UP );
-		public const int GLFW_HAT_LEFT_DOWN = ( GLFW_HAT_LEFT | GLFW_HAT_DOWN );
 		public const int GLFW_KEY_UNKNOWN = -1;
 		public const int GLFW_KEY_SPACE = 32;
 		public const int GLFW_KEY_APOSTROPHE = 39;
@@ -179,7 +175,6 @@ namespace LTP.Interop.OpenGL.Bindings
 		public const int GLFW_KEY_RIGHT_ALT = 346;
 		public const int GLFW_KEY_RIGHT_SUPER = 347;
 		public const int GLFW_KEY_MENU = 348;
-		public const int GLFW_KEY_LAST = GLFW_KEY_MENU;
 		public const int GLFW_MOD_SHIFT = 0x0001;
 		public const int GLFW_MOD_CONTROL = 0x0002;
 		public const int GLFW_MOD_ALT = 0x0004;
@@ -194,10 +189,6 @@ namespace LTP.Interop.OpenGL.Bindings
 		public const int GLFW_MOUSE_BUTTON_6 = 5;
 		public const int GLFW_MOUSE_BUTTON_7 = 6;
 		public const int GLFW_MOUSE_BUTTON_8 = 7;
-		public const int GLFW_MOUSE_BUTTON_LAST = GLFW_MOUSE_BUTTON_8;
-		public const int GLFW_MOUSE_BUTTON_LEFT = GLFW_MOUSE_BUTTON_1;
-		public const int GLFW_MOUSE_BUTTON_RIGHT = GLFW_MOUSE_BUTTON_2;
-		public const int GLFW_MOUSE_BUTTON_MIDDLE = GLFW_MOUSE_BUTTON_3;
 		public const int GLFW_JOYSTICK_1 = 0;
 		public const int GLFW_JOYSTICK_2 = 1;
 		public const int GLFW_JOYSTICK_3 = 2;
@@ -214,7 +205,6 @@ namespace LTP.Interop.OpenGL.Bindings
 		public const int GLFW_JOYSTICK_14 = 13;
 		public const int GLFW_JOYSTICK_15 = 14;
 		public const int GLFW_JOYSTICK_16 = 15;
-		public const int GLFW_JOYSTICK_LAST = GLFW_JOYSTICK_16;
 		public const int GLFW_GAMEPAD_BUTTON_A = 0;
 		public const int GLFW_GAMEPAD_BUTTON_B = 1;
 		public const int GLFW_GAMEPAD_BUTTON_X = 2;
@@ -230,18 +220,12 @@ namespace LTP.Interop.OpenGL.Bindings
 		public const int GLFW_GAMEPAD_BUTTON_DPAD_RIGHT = 12;
 		public const int GLFW_GAMEPAD_BUTTON_DPAD_DOWN = 13;
 		public const int GLFW_GAMEPAD_BUTTON_DPAD_LEFT = 14;
-		public const int GLFW_GAMEPAD_BUTTON_LAST = GLFW_GAMEPAD_BUTTON_DPAD_LEFT;
-		public const int GLFW_GAMEPAD_BUTTON_CROSS = GLFW_GAMEPAD_BUTTON_A;
-		public const int GLFW_GAMEPAD_BUTTON_CIRCLE = GLFW_GAMEPAD_BUTTON_B;
-		public const int GLFW_GAMEPAD_BUTTON_SQUARE = GLFW_GAMEPAD_BUTTON_X;
-		public const int GLFW_GAMEPAD_BUTTON_TRIANGLE = GLFW_GAMEPAD_BUTTON_Y;
 		public const int GLFW_GAMEPAD_AXIS_LEFT_X = 0;
 		public const int GLFW_GAMEPAD_AXIS_LEFT_Y = 1;
 		public const int GLFW_GAMEPAD_AXIS_RIGHT_X = 2;
 		public const int GLFW_GAMEPAD_AXIS_RIGHT_Y = 3;
 		public const int GLFW_GAMEPAD_AXIS_LEFT_TRIGGER = 4;
 		public const int GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER = 5;
-		public const int GLFW_GAMEPAD_AXIS_LAST = GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER;
 		public const int GLFW_NO_ERROR = 0;
 		public const int GLFW_NOT_INITIALIZED = 0x00010001;
 		public const int GLFW_NO_CURRENT_CONTEXT = 0x00010002;
@@ -333,9 +317,52 @@ namespace LTP.Interop.OpenGL.Bindings
 		public const int GLFW_COCOA_CHDIR_RESOURCES = 0x00051001;
 		public const int GLFW_COCOA_MENUBAR = 0x00051002;
 		public const int GLFW_DONT_CARE = -1;
+		public const int GLFW_HAT_RIGHT_UP = ( GLFW_HAT_RIGHT | GLFW_HAT_UP );
+		public const int GLFW_HAT_RIGHT_DOWN = ( GLFW_HAT_RIGHT | GLFW_HAT_DOWN );
+		public const int GLFW_HAT_LEFT_UP = ( GLFW_HAT_LEFT | GLFW_HAT_UP );
+		public const int GLFW_HAT_LEFT_DOWN = ( GLFW_HAT_LEFT | GLFW_HAT_DOWN );
+		public const int GLFW_KEY_LAST = GLFW_KEY_MENU;
+		public const int GLFW_MOUSE_BUTTON_LAST = GLFW_MOUSE_BUTTON_8;
+		public const int GLFW_MOUSE_BUTTON_LEFT = GLFW_MOUSE_BUTTON_1;
+		public const int GLFW_MOUSE_BUTTON_RIGHT = GLFW_MOUSE_BUTTON_2;
+		public const int GLFW_MOUSE_BUTTON_MIDDLE = GLFW_MOUSE_BUTTON_3;
+		public const int GLFW_JOYSTICK_LAST = GLFW_JOYSTICK_16;
+		public const int GLFW_GAMEPAD_BUTTON_LAST = GLFW_GAMEPAD_BUTTON_DPAD_LEFT;
+		public const int GLFW_GAMEPAD_BUTTON_CROSS = GLFW_GAMEPAD_BUTTON_A;
+		public const int GLFW_GAMEPAD_BUTTON_CIRCLE = GLFW_GAMEPAD_BUTTON_B;
+		public const int GLFW_GAMEPAD_BUTTON_SQUARE = GLFW_GAMEPAD_BUTTON_X;
+		public const int GLFW_GAMEPAD_BUTTON_TRIANGLE = GLFW_GAMEPAD_BUTTON_Y;
+		public const int GLFW_GAMEPAD_AXIS_LAST = GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER;
 		#endregion
 
-		#region Structures
+		#region Opaques
+		public struct GLFWmonitor { }
+		public struct GLFWwindow { }
+		public struct GLFWcursor { }
+		public struct GLFWglproc { }
+		public struct GLFWerrorfun { }
+		public struct GLFWwindowposfun { }
+		public struct GLFWwindowsizefun { }
+		public struct GLFWwindowclosefun { }
+		public struct GLFWwindowrefreshfun { }
+		public struct GLFWwindowfocusfun { }
+		public struct GLFWwindowiconifyfun { }
+		public struct GLFWwindowmaximizefun { }
+		public struct GLFWframebuffersizefun { }
+		public struct GLFWwindowcontentscalefun { }
+		public struct GLFWmousebuttonfun { }
+		public struct GLFWcursorposfun { }
+		public struct GLFWcursorenterfun { }
+		public struct GLFWscrollfun { }
+		public struct GLFWkeyfun { }
+		public struct GLFWcharfun { }
+		public struct GLFWcharmodsfun { }
+		public struct GLFWdropfun { }
+		public struct GLFWmonitorfun { }
+		public struct GLFWjoystickfun { }
+		#endregion
+
+		#region Structs
 		public struct GLFWvidmode
 		{
 			public int width;
@@ -351,7 +378,6 @@ namespace LTP.Interop.OpenGL.Bindings
 			public ushort* red;
 			public ushort* green;
 			public ushort* blue;
-
 			public uint size;
 		}
 
@@ -359,7 +385,6 @@ namespace LTP.Interop.OpenGL.Bindings
 		{
 			public int width;
 			public int height;
-
 			public byte* pixels;
 		}
 
@@ -371,151 +396,146 @@ namespace LTP.Interop.OpenGL.Bindings
 		#endregion
 
 		#region Delegates
-		public delegate void GLFWerrorfun( int error, byte* description );
-		public delegate void GLFWwindowposfun( void* window, int xpos, int ypos );
-		public delegate void GLFWwindowsizefun( void* window, int width, int height );
-		public delegate void GLFWwindowclosefun( void* window );
-		public delegate void GLFWwindowrefreshfun( void* window );
-		public delegate void GLFWwindowfocusfun( void* window, int focused );
-		public delegate void GLFWwindowiconifyfun( void* window, int iconified );
-		public delegate void GLFWwindowmaximizefun( void* window, int maximized );
-		public delegate void GLFWframebuffersizefun( void* window, int width, int height );
-		public delegate void GLFWwindowcontentscalefun( void* window, float xscale, float yscale );
-		public delegate void GLFWmousebuttonfun( void* window, int button, int action, int mods );
-		public delegate void GLFWcursorposfun( void* window, double xpos, double ypos );
-		public delegate void GLFWcursorenterfun( void* window, int entered );
-		public delegate void GLFWscrollfun( void* window, double xoffset, double yoffset );
-		public delegate void GLFWkeyfun( void* window, int key, int scancode, int action, int mods );
-		public delegate void GLFWcharfun( void* window, uint codepoint );
-		public delegate void GLFWcharmodsfun( void* window, uint codepoint, int mods );
-		public delegate void GLFWdropfun( void* window, int path_count, byte** paths );
-		public delegate void GLFWmonitorfun( void* monitor, int @event );
-		public delegate void GLFWjoystickfun( int jid, int @event );
+		public delegate void PFNGLFWGLPROCPROC();
+		public delegate void PFNGLFWERRORFUNPROC( int error, byte* description );
+		public delegate void PFNGLFWWINDOWPOSFUNPROC( GLFWwindow* window, int xpos, int ypos );
+		public delegate void PFNGLFWWINDOWSIZEFUNPROC( GLFWwindow* window, int width, int height );
+		public delegate void PFNGLFWWINDOWCLOSEFUNPROC( GLFWwindow* window );
+		public delegate void PFNGLFWWINDOWREFRESHFUNPROC( GLFWwindow* window );
+		public delegate void PFNGLFWWINDOWFOCUSFUNPROC( GLFWwindow* window, int focused );
+		public delegate void PFNGLFWWINDOWICONIFYFUNPROC( GLFWwindow* window, int iconified );
+		public delegate void PFNGLFWWINDOWMAXIMIZEFUNPROC( GLFWwindow* window, int maximized );
+		public delegate void PFNGLFWFRAMEBUFFERSIZEFUNPROC( GLFWwindow* window, int width, int height );
+		public delegate void PFNGLFWWINDOWCONTENTSCALEFUNPROC( GLFWwindow* window, float xscale, float yscale );
+		public delegate void PFNGLFWMOUSEBUTTONFUNPROC( GLFWwindow* window, int button, int action, int mods );
+		public delegate void PFNGLFWCURSORPOSFUNPROC( GLFWwindow* window, double xpos, double ypos );
+		public delegate void PFNGLFWCURSORENTERFUNPROC( GLFWwindow* window, int entered );
+		public delegate void PFNGLFWSCROLLFUNPROC( GLFWwindow* window, double xoffset, double yoffset );
+		public delegate void PFNGLFWKEYFUNPROC( GLFWwindow* window, int key, int scancode, int action, int mods );
+		public delegate void PFNGLFWCHARFUNPROC( GLFWwindow* window, uint codepoint );
+		public delegate void PFNGLFWCHARMODSFUNPROC( GLFWwindow* window, uint codepoint, int mods );
+		public delegate void PFNGLFWDROPFUNPROC( GLFWwindow* window, int count, byte*[] paths );
+		public delegate void PFNGLFWMONITORFUNPROC( GLFWmonitor* monitor, int @event );
+		public delegate void PFNGLFWJOYSTICKFUNPROC( int jid, int @event );
+		#endregion
 
+		#region Prototypes
 		public delegate int PFNGLFWINITPROC();
 		public delegate void PFNGLFWTERMINATEPROC();
 		public delegate void PFNGLFWINITHINTPROC( int hint, int value );
 		public delegate void PFNGLFWGETVERSIONPROC( int* major, int* minor, int* rev );
 		public delegate byte* PFNGLFWGETVERSIONSTRINGPROC();
-		public delegate int PFNGLFWGETERRORPROC( byte* description );
-		public delegate GLFWerrorfun PFNGLFWSETERRORCALLBACKPROC( GLFWerrorfun callback );
-		public delegate void** PFNGLFWGETMONITORSPROC( int* count );
-		public delegate void* PFNGLFWGETPRIMARYMONITORPROC();
-		public delegate void PFNGLFWGETMONITORPOSPROC( void* monitor, int* xpos, int* ypos );
-		public delegate void PFNGLFWGETMONITORWORKAREAPROC( void* monitor, int* xpos, int* ypos, int* width, int* height );
-		public delegate void PFNGLFWGETMONITORPHYSICALSIZEPROC( void* monitor, int* widthMM, int* heightMM );
-		public delegate void PFNGLFWGETMONITORCONTENTSCALEPROC( void* monitor, float* xscale, float* yscale );
-		public delegate byte* PFNGLFWGETMONITORNAMEPROC( void* monitor );
-		public delegate void PFNGLFWSETMONITORUSERPOINTERPROC( void* monitor, void* pointer );
-		public delegate void* PFNGLFWGETMONITORUSERPOINTERPROC( void* monitor );
-		public delegate GLFWmonitorfun PFNGLFWSETMONITORCALLBACKPROC( GLFWmonitorfun callback );
-		public delegate GLFWvidmode* PFNGLFWGETVIDEOMODESPROC( void* monitor, int* count );
-		public delegate GLFWvidmode* PFNGLFWGETVIDEOMODEPROC( void* monitor );
-		public delegate void PFNGLFWSETGAMMAPROC( void* monitor, float gamma );
-		public delegate GLFWgammaramp* PFNGLFWGETGAMMARAMPPROC( void* monitor );
-		public delegate void PFNGLFWSETGAMMARAMPPROC( void* monitor, GLFWgammaramp* ramp );
+		public delegate int PFNGLFWGETERRORPROC( byte** description );
+		public delegate GLFWerrorfun* PFNGLFWSETERRORCALLBACKPROC( GLFWerrorfun* callback );
+		public delegate GLFWmonitor** PFNGLFWGETMONITORSPROC( int* count );
+		public delegate GLFWmonitor* PFNGLFWGETPRIMARYMONITORPROC();
+		public delegate void PFNGLFWGETMONITORPOSPROC( GLFWmonitor* monitor, int* xpos, int* ypos );
+		public delegate void PFNGLFWGETMONITORWORKAREAPROC( GLFWmonitor* monitor, int* xpos, int* ypos, int* width, int* height );
+		public delegate void PFNGLFWGETMONITORPHYSICALSIZEPROC( GLFWmonitor* monitor, int* widthMM, int* heightMM );
+		public delegate void PFNGLFWGETMONITORCONTENTSCALEPROC( GLFWmonitor* monitor, float* xscale, float* yscale );
+		public delegate byte* PFNGLFWGETMONITORNAMEPROC( GLFWmonitor* monitor );
+		public delegate void PFNGLFWSETMONITORUSERPOINTERPROC( GLFWmonitor* monitor, void* pointer );
+		public delegate void* PFNGLFWGETMONITORUSERPOINTERPROC( GLFWmonitor* monitor );
+		public delegate GLFWmonitorfun* PFNGLFWSETMONITORCALLBACKPROC( GLFWmonitorfun* callback );
+		public delegate GLFWvidmode* PFNGLFWGETVIDEOMODESPROC( GLFWmonitor* monitor, int* count );
+		public delegate GLFWvidmode* PFNGLFWGETVIDEOMODEPROC( GLFWmonitor* monitor );
+		public delegate void PFNGLFWSETGAMMAPROC( GLFWmonitor* monitor, float gamma );
+		public delegate GLFWgammaramp* PFNGLFWGETGAMMARAMPPROC( GLFWmonitor* monitor );
+		public delegate void PFNGLFWSETGAMMARAMPPROC( GLFWmonitor* monitor, GLFWgammaramp* ramp );
 		public delegate void PFNGLFWDEFAULTWINDOWHINTSPROC();
 		public delegate void PFNGLFWWINDOWHINTPROC( int hint, int value );
 		public delegate void PFNGLFWWINDOWHINTSTRINGPROC( int hint, byte* value );
-		public delegate void* PFNGLFWCREATEWINDOWPROC( int width, int height, byte* title, void* monitor, void* share );
-		public delegate void PFNGLFWDESTROYWINDOWPROC( void* window );
-		public delegate int PFNGLFWWINDOWSHOULDCLOSEPROC( void* window );
-		public delegate void PFNGLFWSETWINDOWSHOULDCLOSEPROC( void* window, int value );
-		public delegate void PFNGLFWSETWINDOWTITLEPROC( void* window, byte* title );
-		public delegate void PFNGLFWSETWINDOWICONPROC( void* window, int count, GLFWimage* images );
-		public delegate void PFNGLFWGETWINDOWPOSPROC( void* window, int* xpos, int* ypos );
-		public delegate void PFNGLFWSETWINDOWPOSPROC( void* window, int xpos, int ypos );
-		public delegate void PFNGLFWGETWINDOWSIZEPROC( void* window, int* width, int* height );
-		public delegate void PFNGLFWSETWINDOWSIZELIMITSPROC( void* window, int minwidth, int minheight, int maxwidth, int maxheight );
-		public delegate void PFNGLFWSETWINDOWASPECTRATIOPROC( void* window, int numer, int denom );
-		public delegate void PFNGLFWSETWINDOWSIZEPROC( void* window, int width, int height );
-		public delegate void PFNGLFWGETFRAMEBUFFERSIZEPROC( void* window, int* width, int* height );
-		public delegate void PFNGLFWGETWINDOWFRAMESIZEPROC( void* window, int* left, int* top, int* right, int* bottom );
-		public delegate void PFNGLFWGETWINDOWCONTENTSCALEPROC( void* window, float* xscale, float* yscale );
-		public delegate float PFNGLFWGETWINDOWOPACITYPROC( void* window );
-		public delegate void PFNGLFWSETWINDOWOPACITYPROC( void* window, float opacity );
-		public delegate void PFNGLFWICONIFYWINDOWPROC( void* window );
-		public delegate void PFNGLFWRESTOREWINDOWPROC( void* window );
-		public delegate void PFNGLFWMAXIMIZEWINDOWPROC( void* window );
-		public delegate void PFNGLFWSHOWWINDOWPROC( void* window );
-		public delegate void PFNGLFWHIDEWINDOWPROC( void* window );
-		public delegate void PFNGLFWFOCUSWINDOWPROC( void* window );
-		public delegate void PFNGLFWREQUESTWINDOWATTENTIONPROC( void* window );
-		public delegate void* PFNGLFWGETWINDOWMONITORPROC( void* window );
-		public delegate void PFNGLFWSETWINDOWMONITORPROC( void* window, void* monitor, int xpos, int ypos, int width, int height, int refreshRate );
-		public delegate int PFNGLFWGETWINDOWATTRIBPROC( void* window, int attrib );
-		public delegate void PFNGLFWSETWINDOWATTRIBPROC( void* window, int attrib, int value );
-		public delegate void PFNGLFWSETWINDOWUSERPOINTERPROC( void* window, void* pointer );
-		public delegate void* PFNGLFWGETWINDOWUSERPOINTERPROC( void* window );
-		public delegate GLFWwindowposfun PFNGLFWSETWINDOWPOSCALLBACKPROC( void* window, GLFWwindowposfun callback );
-		public delegate GLFWwindowsizefun PFNGLFWSETWINDOWSIZECALLBACKPROC( void* window, GLFWwindowsizefun callback );
-		public delegate GLFWwindowclosefun PFNGLFWSETWINDOWCLOSECALLBACKPROC( void* window, GLFWwindowclosefun callback );
-		public delegate GLFWwindowrefreshfun PFNGLFWSETWINDOWREFRESHCALLBACKPROC( void* window, GLFWwindowrefreshfun callback );
-		public delegate GLFWwindowfocusfun PFNGLFWSETWINDOWFOCUSCALLBACKPROC( void* window, GLFWwindowfocusfun callback );
-		public delegate GLFWwindowiconifyfun PFNGLFWSETWINDOWICONIFYCALLBACKPROC( void* window, GLFWwindowiconifyfun callback );
-		public delegate GLFWwindowmaximizefun PFNGLFWSETWINDOWMAXIMIZECALLBACKPROC( void* window, GLFWwindowmaximizefun callback );
-		public delegate GLFWframebuffersizefun PFNGLFWSETFRAMEBUFFERSIZECALLBACKPROC( void* window, GLFWframebuffersizefun callback );
-		public delegate GLFWwindowcontentscalefun PFNGLFWSETWINDOWCONTENTSCALECALLBACKPROC( void* window, GLFWwindowcontentscalefun callback );
+		public delegate GLFWwindow* PFNGLFWCREATEWINDOWPROC( int width, int height, byte* title, GLFWmonitor* monitor, GLFWwindow* share );
+		public delegate void PFNGLFWDESTROYWINDOWPROC( GLFWwindow* window );
+		public delegate int PFNGLFWWINDOWSHOULDCLOSEPROC( GLFWwindow* window );
+		public delegate void PFNGLFWSETWINDOWSHOULDCLOSEPROC( GLFWwindow* window, int value );
+		public delegate void PFNGLFWSETWINDOWTITLEPROC( GLFWwindow* window, byte* title );
+		public delegate void PFNGLFWSETWINDOWICONPROC( GLFWwindow* window, int count, GLFWimage* images );
+		public delegate void PFNGLFWGETWINDOWPOSPROC( GLFWwindow* window, int* xpos, int* ypos );
+		public delegate void PFNGLFWSETWINDOWPOSPROC( GLFWwindow* window, int xpos, int ypos );
+		public delegate void PFNGLFWGETWINDOWSIZEPROC( GLFWwindow* window, int* width, int* height );
+		public delegate void PFNGLFWSETWINDOWSIZELIMITSPROC( GLFWwindow* window, int minwidth, int minheight, int maxwidth, int maxheight );
+		public delegate void PFNGLFWSETWINDOWASPECTRATIOPROC( GLFWwindow* window, int numer, int denom );
+		public delegate void PFNGLFWSETWINDOWSIZEPROC( GLFWwindow* window, int width, int height );
+		public delegate void PFNGLFWGETFRAMEBUFFERSIZEPROC( GLFWwindow* window, int* width, int* height );
+		public delegate void PFNGLFWGETWINDOWFRAMESIZEPROC( GLFWwindow* window, int* left, int* top, int* right, int* bottom );
+		public delegate void PFNGLFWGETWINDOWCONTENTSCALEPROC( GLFWwindow* window, float* xscale, float* yscale );
+		public delegate float PFNGLFWGETWINDOWOPACITYPROC( GLFWwindow* window );
+		public delegate void PFNGLFWSETWINDOWOPACITYPROC( GLFWwindow* window, float opacity );
+		public delegate void PFNGLFWICONIFYWINDOWPROC( GLFWwindow* window );
+		public delegate void PFNGLFWRESTOREWINDOWPROC( GLFWwindow* window );
+		public delegate void PFNGLFWMAXIMIZEWINDOWPROC( GLFWwindow* window );
+		public delegate void PFNGLFWSHOWWINDOWPROC( GLFWwindow* window );
+		public delegate void PFNGLFWHIDEWINDOWPROC( GLFWwindow* window );
+		public delegate void PFNGLFWFOCUSWINDOWPROC( GLFWwindow* window );
+		public delegate void PFNGLFWREQUESTWINDOWATTENTIONPROC( GLFWwindow* window );
+		public delegate GLFWmonitor* PFNGLFWGETWINDOWMONITORPROC( GLFWwindow* window );
+		public delegate void PFNGLFWSETWINDOWMONITORPROC( GLFWwindow* window, GLFWmonitor* monitor, int xpos, int ypos, int width, int height, int refreshRate );
+		public delegate int PFNGLFWGETWINDOWATTRIBPROC( GLFWwindow* window, int attrib );
+		public delegate void PFNGLFWSETWINDOWATTRIBPROC( GLFWwindow* window, int attrib, int value );
+		public delegate void PFNGLFWSETWINDOWUSERPOINTERPROC( GLFWwindow* window, void* pointer );
+		public delegate void* PFNGLFWGETWINDOWUSERPOINTERPROC( GLFWwindow* window );
+		public delegate GLFWwindowposfun* PFNGLFWSETWINDOWPOSCALLBACKPROC( GLFWwindow* window, GLFWwindowposfun* callback );
+		public delegate GLFWwindowsizefun* PFNGLFWSETWINDOWSIZECALLBACKPROC( GLFWwindow* window, GLFWwindowsizefun* callback );
+		public delegate GLFWwindowclosefun* PFNGLFWSETWINDOWCLOSECALLBACKPROC( GLFWwindow* window, GLFWwindowclosefun* callback );
+		public delegate GLFWwindowrefreshfun* PFNGLFWSETWINDOWREFRESHCALLBACKPROC( GLFWwindow* window, GLFWwindowrefreshfun* callback );
+		public delegate GLFWwindowfocusfun* PFNGLFWSETWINDOWFOCUSCALLBACKPROC( GLFWwindow* window, GLFWwindowfocusfun* callback );
+		public delegate GLFWwindowiconifyfun* PFNGLFWSETWINDOWICONIFYCALLBACKPROC( GLFWwindow* window, GLFWwindowiconifyfun* callback );
+		public delegate GLFWwindowmaximizefun* PFNGLFWSETWINDOWMAXIMIZECALLBACKPROC( GLFWwindow* window, GLFWwindowmaximizefun* callback );
+		public delegate GLFWframebuffersizefun* PFNGLFWSETFRAMEBUFFERSIZECALLBACKPROC( GLFWwindow* window, GLFWframebuffersizefun* callback );
+		public delegate GLFWwindowcontentscalefun* PFNGLFWSETWINDOWCONTENTSCALECALLBACKPROC( GLFWwindow* window, GLFWwindowcontentscalefun* callback );
 		public delegate void PFNGLFWPOLLEVENTSPROC();
 		public delegate void PFNGLFWWAITEVENTSPROC();
 		public delegate void PFNGLFWWAITEVENTSTIMEOUTPROC( double timeout );
 		public delegate void PFNGLFWPOSTEMPTYEVENTPROC();
-		public delegate int PFNGLFWGETINPUTMODEPROC( void* window, int mode );
-		public delegate void PFNGLFWSETINPUTMODEPROC( void* window, int mode, int value );
+		public delegate int PFNGLFWGETINPUTMODEPROC( GLFWwindow* window, int mode );
+		public delegate void PFNGLFWSETINPUTMODEPROC( GLFWwindow* window, int mode, int value );
 		public delegate int PFNGLFWRAWMOUSEMOTIONSUPPORTEDPROC();
 		public delegate byte* PFNGLFWGETKEYNAMEPROC( int key, int scancode );
 		public delegate int PFNGLFWGETKEYSCANCODEPROC( int key );
-		public delegate int PFNGLFWGETKEYPROC( void* window, int key );
-		public delegate int PFNGLFWGETMOUSEBUTTONPROC( void* window, int button );
-		public delegate void PFNGLFWGETCURSORPOSPROC( void* window, double* xpos, double* ypos );
-		public delegate void PFNGLFWSETCURSORPOSPROC( void* window, double xpos, double ypos );
-		public delegate void* PFNGLFWCREATECURSORPROC( GLFWimage* image, int xhot, int yhot );
-		public delegate void* PFNGLFWCREATESTANDARDCURSORPROC( int shape );
-		public delegate void PFNGLFWDESTROYCURSORPROC( void* cursor );
-		public delegate void PFNGLFWSETCURSORPROC( void* window, void* cursor );
-		public delegate GLFWkeyfun PFNGLFWSETKEYCALLBACKPROC( void* window, GLFWkeyfun callback );
-		public delegate GLFWcharfun PFNGLFWSETCHARCALLBACKPROC( void* window, GLFWcharfun callback );
-		public delegate GLFWcharmodsfun PFNGLFWSETCHARMODSCALLBACKPROC( void* window, GLFWcharmodsfun callback );
-		public delegate GLFWmousebuttonfun PFNGLFWSETMOUSEBUTTONCALLBACKPROC( void* window, GLFWmousebuttonfun callback );
-		public delegate GLFWcursorposfun PFNGLFWSETCURSORPOSCALLBACKPROC( void* window, GLFWcursorposfun callback );
-		public delegate GLFWcursorenterfun PFNGLFWSETCURSORENTERCALLBACKPROC( void* window, GLFWcursorenterfun callback );
-		public delegate GLFWscrollfun PFNGLFWSETSCROLLCALLBACKPROC( void* window, GLFWscrollfun callback );
-		public delegate GLFWdropfun PFNGLFWSETDROPCALLBACKPROC( void* window, GLFWdropfun callback );
+		public delegate int PFNGLFWGETKEYPROC( GLFWwindow* window, int key );
+		public delegate int PFNGLFWGETMOUSEBUTTONPROC( GLFWwindow* window, int button );
+		public delegate void PFNGLFWGETCURSORPOSPROC( GLFWwindow* window, double* xpos, double* ypos );
+		public delegate void PFNGLFWSETCURSORPOSPROC( GLFWwindow* window, double xpos, double ypos );
+		public delegate GLFWcursor* PFNGLFWCREATECURSORPROC( GLFWimage* image, int xhot, int yhot );
+		public delegate GLFWcursor* PFNGLFWCREATESTANDARDCURSORPROC( int shape );
+		public delegate void PFNGLFWDESTROYCURSORPROC( GLFWcursor* cursor );
+		public delegate void PFNGLFWSETCURSORPROC( GLFWwindow* window, GLFWcursor* cursor );
+		public delegate GLFWkeyfun* PFNGLFWSETKEYCALLBACKPROC( GLFWwindow* window, GLFWkeyfun* callback );
+		public delegate GLFWcharfun* PFNGLFWSETCHARCALLBACKPROC( GLFWwindow* window, GLFWcharfun* callback );
+		public delegate GLFWcharmodsfun* PFNGLFWSETCHARMODSCALLBACKPROC( GLFWwindow* window, GLFWcharmodsfun* callback );
+		public delegate GLFWmousebuttonfun* PFNGLFWSETMOUSEBUTTONCALLBACKPROC( GLFWwindow* window, GLFWmousebuttonfun* callback );
+		public delegate GLFWcursorposfun* PFNGLFWSETCURSORPOSCALLBACKPROC( GLFWwindow* window, GLFWcursorposfun* callback );
+		public delegate GLFWcursorenterfun* PFNGLFWSETCURSORENTERCALLBACKPROC( GLFWwindow* window, GLFWcursorenterfun* callback );
+		public delegate GLFWscrollfun* PFNGLFWSETSCROLLCALLBACKPROC( GLFWwindow* window, GLFWscrollfun* callback );
+		public delegate GLFWdropfun* PFNGLFWSETDROPCALLBACKPROC( GLFWwindow* window, GLFWdropfun* callback );
 		public delegate int PFNGLFWJOYSTICKPRESENTPROC( int jid );
 		public delegate float* PFNGLFWGETJOYSTICKAXESPROC( int jid, int* count );
-		public delegate byte PFNGLFWGETJOYSTICKBUTTONSPROC( int jid, int* count );
-		public delegate byte PFNGLFWGETJOYSTICKHATSPROC( int jid, int* count );
+		public delegate byte* PFNGLFWGETJOYSTICKBUTTONSPROC( int jid, int* count );
+		public delegate byte* PFNGLFWGETJOYSTICKHATSPROC( int jid, int* count );
 		public delegate byte* PFNGLFWGETJOYSTICKNAMEPROC( int jid );
 		public delegate byte* PFNGLFWGETJOYSTICKGUIDPROC( int jid );
 		public delegate void PFNGLFWSETJOYSTICKUSERPOINTERPROC( int jid, void* pointer );
 		public delegate void* PFNGLFWGETJOYSTICKUSERPOINTERPROC( int jid );
 		public delegate int PFNGLFWJOYSTICKISGAMEPADPROC( int jid );
-		public delegate GLFWjoystickfun PFNGLFWSETJOYSTICKCALLBACKPROC( GLFWjoystickfun callback );
+		public delegate GLFWjoystickfun* PFNGLFWSETJOYSTICKCALLBACKPROC( GLFWjoystickfun* callback );
 		public delegate int PFNGLFWUPDATEGAMEPADMAPPINGSPROC( byte* @string );
 		public delegate byte* PFNGLFWGETGAMEPADNAMEPROC( int jid );
 		public delegate int PFNGLFWGETGAMEPADSTATEPROC( int jid, GLFWgamepadstate* state );
-		public delegate void PFNGLFWSETCLIPBOARDSTRINGPROC( void* window, byte* @string );
-		public delegate byte* PFNGLFWGETCLIPBOARDSTRINGPROC( void* window );
+		public delegate void PFNGLFWSETCLIPBOARDSTRINGPROC( GLFWwindow* window, byte* @string );
+		public delegate byte* PFNGLFWGETCLIPBOARDSTRINGPROC( GLFWwindow* window );
 		public delegate double PFNGLFWGETTIMEPROC();
 		public delegate void PFNGLFWSETTIMEPROC( double time );
 		public delegate ulong PFNGLFWGETTIMERVALUEPROC();
 		public delegate ulong PFNGLFWGETTIMERFREQUENCYPROC();
-		public delegate void PFNGLFWMAKECONTEXTCURRENTPROC( void* window );
-		public delegate void* PFNGLFWGETCURRENTCONTEXTPROC();
-		public delegate void PFNGLFWSWAPBUFFERSPROC( void* window );
+		public delegate void PFNGLFWMAKECONTEXTCURRENTPROC( GLFWwindow* window );
+		public delegate GLFWwindow* PFNGLFWGETCURRENTCONTEXTPROC();
+		public delegate void PFNGLFWSWAPBUFFERSPROC( GLFWwindow* window );
 		public delegate void PFNGLFWSWAPINTERVALPROC( int interval );
 		public delegate int PFNGLFWEXTENSIONSUPPORTEDPROC( byte* extension );
-		public delegate int* PFNGLFWGETPROCADDRESSPROC( byte* procname );
+		public delegate GLFWglproc* PFNGLFWGETPROCADDRESSPROC( byte* procname );
 		public delegate int PFNGLFWVULKANSUPPORTEDPROC();
-		public delegate byte* PFNGLFWGETREQUIREDINSTANCEEXTENSIONSPROC( uint* count );
-		#endregion
-
-		#region Constructors
-		static GLFW3()
-		{
-			_handle = LibraryLoader.Load( typeof( GLFW3 ) );
-			glfwInit();
-		}
+		public delegate byte** PFNGLFWGETREQUIREDINSTANCEEXTENSIONSPROC( uint* count );
 		#endregion
 
 		#region Methods
@@ -751,6 +771,15 @@ namespace LTP.Interop.OpenGL.Bindings
 		public static PFNGLFWVULKANSUPPORTEDPROC glfwVulkanSupported;
 		[ExternalMethod]
 		public static PFNGLFWGETREQUIREDINSTANCEEXTENSIONSPROC glfwGetRequiredInstanceExtensions;
+		#endregion
+		#endregion
+
+		#region Constructors
+		static GLFW3()
+		{
+			_handle = LibraryLoader.Load( typeof( GLFW3 ) );
+			glfwInit();
+		}
 		#endregion
 	}
 }

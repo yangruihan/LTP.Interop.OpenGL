@@ -13,12 +13,12 @@ namespace LTP.Interop.OpenGL.Tests.Triangle
 			// We will need to create a GL context before calling the LTP.Interop.OpenGL.Bindings.OpenGL constructor
 			glfwInit();
 
-			void* window;
+			GLFWwindow* window;
 			byte[] titleBytes = Encoding.ASCII.GetBytes( "Triangle Test" );
 
 			fixed( byte* titleBytesPtr = titleBytes )
 			{
-				window = glfwCreateWindow( 640, 480, titleBytesPtr, (void*)0, (void*)0 );
+				window = glfwCreateWindow( 640, 480, titleBytesPtr, (GLFWmonitor*)0, (GLFWwindow*)0 );
 			}
 
 			glfwMakeContextCurrent( window );
