@@ -1,4 +1,4 @@
 [submodule "LTP.Interop"]
 	path = LTP.Interop
 	url = git@github.com:latet-party/LTP.Interop.git
-	branch = development
+	branch = net5
