@@ -772,9 +772,9 @@ namespace LTP.Interop.OpenGL.Bindings
 		public delegate void PFNGLGETATTACHEDSHADERSPROC( uint program, int maxCount, int* count, uint* shaders );
 		public delegate int PFNGLGETATTRIBLOCATIONPROC( uint program, char* name );
 		public delegate void PFNGLGETPROGRAMIVPROC( uint program, uint pname, int* @params );
-		public delegate void PFNGLGETPROGRAMINFOLOGPROC( uint program, int bufSize, int* length, char* infoLog );
+		public delegate void PFNGLGETPROGRAMINFOLOGPROC( uint program, int bufSize, int* length, byte* infoLog );
 		public delegate void PFNGLGETSHADERIVPROC( uint shader, uint pname, int* @params );
-		public delegate void PFNGLGETSHADERINFOLOGPROC( uint shader, int bufSize, int* length, char* infoLog );
+		public delegate void PFNGLGETSHADERINFOLOGPROC( uint shader, int bufSize, int* length, byte* infoLog );
 		public delegate void PFNGLGETSHADERSOURCEPROC( uint shader, int bufSize, int* length, char* source );
 		public delegate int PFNGLGETUNIFORMLOCATIONPROC( uint program, char* name );
 		public delegate void PFNGLGETUNIFORMFVPROC( uint program, int location, float* @params );
@@ -786,7 +786,7 @@ namespace LTP.Interop.OpenGL.Bindings
 		public delegate bool PFNGLISPROGRAMPROC( uint program );
 		public delegate bool PFNGLISSHADERPROC( uint shader );
 		public delegate void PFNGLLINKPROGRAMPROC( uint program );
-		public delegate void PFNGLSHADERSOURCEPROC( uint shader, int count, char* @string, int* length );
+		public delegate void PFNGLSHADERSOURCEPROC( uint shader, int count, byte** @string, int* length );
 		public delegate void PFNGLUSEPROGRAMPROC( uint program );
 		public delegate void PFNGLUNIFORM1FPROC( int location, float v0 );
 		public delegate void PFNGLUNIFORM2FPROC( int location, float v0, float v1 );
